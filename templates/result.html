@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object Tracking Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        video {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            margin-top: 50px;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        p {
+            text-align: center;
+            margin-top: 50px;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Object Tracking Result</h1>
+    <video controls autoplay loop>
+        <source src="{{ url_for('static', filename='object_tracking.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h2>Number of Vehicles Counted: {{ vehicle_count }}</h2>
+    <p><a href="{{ url_for('index') }}">Home Page</a></p>
+</body>
+</html>

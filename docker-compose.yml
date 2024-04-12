@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+    postgres:
+        image: postgres:latest
+        container_name: vehdetect-postgresql
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: "vehdetect"
+            POSTGRES_PASSWORD: "vehdetect"
+            POSTGRES_HOST_AUTH_METHOD: trust
+        volumes:
+            - vehdetect-postgresql-vol:/var/lib/postgresql/data
+
+volumes:
+    vehdetect-postgresql-vol:
+
+# Docker
+# Démarrer services docker-compose up -d
+# Démarrer services docker start vehdetect-postgresql
+# Arrêter services docker stop vehdetect-postgresql
+# Vérifier état conteneur docker-compose ps
+# Arrêter et supprimer conteneur docker-compose down
+# Se connecter à la BDD docker exec -it vehdetect-postgresql psql -U vehdetect -d vehdetect
+
+# PostgreSQL
+# Lister relations \dt
+# Après docker exec, pour créer et peupler la BDD : \i /chemin/vers/le/fichier.sql
+
+

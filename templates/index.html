@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Tracking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        p {
+            text-align: center;
+            margin-top: 50px;
+        }
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var fileInput = document.querySelector('input[type="file"]');
+            var file = fileInput.files[0];
+            var fileName = file.name;
+            var fileExtension = fileName.split('.').pop().toLowerCase();
+            if (fileExtension !== 'mp4' && fileExtension !== 'avi') {
+                alert('Invalid file format. Please select a video file in MP4 or AVI format.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Upload Video for Object Tracking</h1>
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('index') }}" onsubmit="return validateForm();">
+        <input type="file" name="video">
+        <br>
+        <label for="tracking">Tracking</label>
+        <input type="radio" id="tracking" name="use_case" value="tracking" checked>
+        <label for="speed">Speed Calculation</label>
+        <input type="radio" id="speed" name="use_case" value="speed">
+        <br> <!-- Write your comments here -->
+        <input type="submit" value="Upload">
+    </form>
+    <p><a href="{{ url_for('video_info') }}">View Video Information</a></p>
+</body>
+</html>

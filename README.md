@@ -1,4 +1,4 @@
-# DeepLearningTrafficAnalysis
+# Car Tracking
 ## About the project
 
 A tool for traffic analysis.

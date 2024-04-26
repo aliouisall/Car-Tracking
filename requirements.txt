@@ -71,7 +71,7 @@ jupyterlab
 jupyterlab-pygments
 jupyterlab-widgets
 jupyterlab_server
-keras==2.10.0
+keras
 Keras-Preprocessing
 kiwisolver
 lapx==0.5.7

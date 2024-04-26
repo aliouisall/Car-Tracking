@@ -80,7 +80,6 @@ MarkupSafe
 matplotlib
 matplotlib-inline
 mistune
-mkl-random
 mkl-service==2.4.0
 mpmath
 multidict

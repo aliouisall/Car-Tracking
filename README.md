@@ -23,7 +23,7 @@ Docker compose :
 
 Run server :
 ```sh
-    python server_qm.py
+    python server.py
 ```
 
 Database connection :

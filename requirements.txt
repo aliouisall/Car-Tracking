@@ -106,7 +106,7 @@ platformdirs
 ply==3.11
 prometheus-client
 prompt-toolkit
-protobuf==3.20.3
+protobuf
 psutil
 psycopg2
 ptyprocess

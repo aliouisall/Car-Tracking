@@ -1,24 +1,30 @@
-name: Unit test with GitHub Actions
+name: CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  container-job:
-    runs-on: ubuntu-latest
-    container: postgres:latest
-
-    services:
-      postgres:
-        image: postgres
-        ports:
-          - 5432:5432
   build:
     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: vehdetect
+          POSTGRES_DB: vehdetect
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
-    - name: Set up Python 3.11
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
       uses: actions/setup-python@v3
       with:
         python-version: 3.11
@@ -26,13 +32,13 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-
-    - name: Run server
-      run: python server.py
-      env:
-        POSGRES_HOST : "postgres"
-        POSTGRES_PORT : 5432
+        pip install psycopg2-binary
 
     - name: Run tests
+      env:
+        PGHOST: localhost
+        PGPORT: 5432
+        PGUSER: vehdetect
+        PGDATABASE: vehdetect
       run: |
-        python -m unittest test_server.py
+        python -m unittest test_server.py'

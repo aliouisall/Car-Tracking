@@ -31,6 +31,11 @@ Database connection :
     docker exec -it vehdetect-postgresql psql -U vehdetect -d vehdetect
 ```
 
+Unit test :
+```sh
+    python -m unittest test_server.py
+```
+
 Stop services :
 ```sh
     docker stop vehdetect-postgresql

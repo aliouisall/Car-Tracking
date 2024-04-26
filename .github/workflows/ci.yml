@@ -3,6 +3,15 @@ name: Unit test with GitHub Actions
 on: [push, pull_request]
 
 jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    container: postgres:latest
+
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
   build:
     runs-on: ubuntu-latest
 
@@ -17,6 +26,12 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+
+    - name: Run server
+      run: python server.py
+      env:
+        POSGRES_HOST : "postgres"
+        POSTGRES_PORT : 5432
 
     - name: Run tests
       run: |

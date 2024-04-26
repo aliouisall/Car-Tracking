@@ -151,7 +151,7 @@ sympy
 tensorboard==2.10.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.7.0
-tensorflow==2.13.0
+tensorflow
 tensorflow-estimator==2.10.0
 termcolor
 terminado
